@@ -1,8 +1,15 @@
+require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
-const corsOptions = require('./config/corsOptions');
 const app = express();
 const port = process.env.PORT || 3500;
+
+// Configure CORS options
+const corsOptions = {
+    origin: 'https://bajajfinserv-challenge1.onrender.com', // Allow this origin
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type',
+};
 
 app.use(cors(corsOptions));
 
@@ -25,9 +32,9 @@ app.post('/bfhl', (req, res) => {
 
     const response = {
         is_success: true,
-        user_id: "john_doe_17091999",
-        email: "john@xyz.com",
-        roll_number: "ABCD123",
+        user_id: process.env.USER_ID,
+        email: process.env.EMAIL_ID,
+        roll_number: process.env.REG_NO,
         numbers,
         alphabets,
         highest_lowercase_alphabet: highestLowercaseAlphabet ? [highestLowercaseAlphabet] : []
