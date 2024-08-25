@@ -1,8 +1,14 @@
 const express = require('express');
 const cors = require('cors');
-const corsOptions = require('./config/corsOptions');
 const app = express();
 const port = process.env.PORT || 3500;
+
+// Configure CORS options
+const corsOptions = {
+    origin: 'https://bajajfinserv-challenge1.onrender.com', // Allow this origin
+    methods: 'GET,POST',
+    allowedHeaders: 'Content-Type',
+};
 
 app.use(cors(corsOptions));
 
